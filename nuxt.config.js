@@ -132,9 +132,9 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     vendor: ['element-ui'],
-    extend (config, ctx) {
+    extend(config, ctx) {
       // ...
-      const svgRule = config.module.rules.find(rule => rule.test.test('.svg'))
+      const svgRule = config.module.rules.find((rule) => rule.test.test('.svg'))
       svgRule.exclude = [path.resolve(__dirname, 'assets/svg')]
       // Includes /icons/svg for svg-sprite-loader
       config.module.rules.push({
@@ -142,10 +142,10 @@ export default {
         include: [path.resolve(__dirname, 'assets/svg')],
         loader: 'svg-sprite-loader',
         options: {
-          symbolId: 'icon-[name]'
-        }
+          symbolId: 'icon-[name]',
+        },
       })
-    }
+    },
   },
 
   // 跨域
@@ -156,5 +156,10 @@ export default {
         changeOrigin: true, // 是否跨域
       },
     },
+  },
+  server: {
+    port: 3000,
+    host: '0.0.0.0',
+    timing: false,
   },
 }
